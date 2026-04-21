@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DJI Mini 4</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: #fff;
+    color: #111;
+}
+
+/* HEADER */
+header {
+    position: sticky;
+    top: 0;
+    background: rgba(255,255,255,0.9);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 40px;
+    z-index: 1000;
+    border-bottom: 1px solid #eee;
+}
+
+.logo {
+    font-weight: 600;
+}
+
+nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #333;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #000;
+}
+
+/* BUTTON */
+.btn {
+    background: #000;
+    color: #fff;
+    padding: 12px 22px;
+    border-radius: 999px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+    background: #222;
+}
+
+/* HERO */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 8%;
+}
+
+.hero-text {
+    max-width: 500px;
+    animation: fadeUp 1s ease;
+}
+
+.hero h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.hero img {
+    width: 500px;
+    max-width: 100%;
+    animation: float 6s ease-in-out infinite;
+}
+
+/* SECTIONS */
+section {
+    padding: 100px 8%;
+}
+
+.section-title {
+    font-size: 32px;
+    margin-bottom: 40px;
+}
+
+/* FEATURES */
+.features {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.feature {
+    flex: 1;
+    min-width: 220px;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: 0.6s;
+}
+
+.feature.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* SPECS */
+.specs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+    gap: 20px;
+}
+
+.spec {
+    padding: 25px;
+    border: 1px solid #eee;
+    border-radius: 16px;
+    transition: 0.3s;
+}
+
+.spec:hover {
+    transform: translateY(-5px);
+}
+
+/* CTA */
+.cta {
+    text-align: center;
+}
+
+.cta h2 {
+    margin-bottom: 30px;
+}
+
+/* ANIMATIONS */
+@keyframes fadeUp {
+    from {opacity:0; transform: translateY(40px);}
+    to {opacity:1; transform: translateY(0);}
+}
+
+@keyframes float {
+    0%,100% {transform: translateY(0);}
+    50% {transform: translateY(-20px);}
+}
+
+/* RESPONSIVE */
+@media(max-width: 768px) {
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        height: auto;
+        padding-top: 100px;
+    }
+
+    .hero img {
+        margin-top: 40px;
+    }
+
+    nav {
+        display: none;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">DJI Mini 4</div>
+    <nav>
+        <a href="#">Главная</a>
+        <a href="#about">О товаре</a>
+        <a href="#specs">Характеристики</a>
+        <a href="#buy">Купить</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <div class="hero-text">
+        <h1>Свобода полёта в твоих руках</h1>
+        <p>Компактный, мощный и умный дрон нового поколения</p>
+        <a class="btn" href="https://www.amazon.com/dp/B0CGX8L5YH" target="_blank">
+            Купить на Amazon
+        </a>
+    </div>
+    <img src="https://images.unsplash.com/photo-1508614589041-895b88991e3e" alt="drone">
+</section>
+
+<section id="about">
+    <h2 class="section-title">О товаре</h2>
+    <div class="features">
+        <div class="feature">📡 Дальность до 10 км</div>
+        <div class="feature">⚖️ Вес менее 250 г</div>
+        <div class="feature">🧠 Умные функции для новичков</div>
+        <div class="feature">🎥 Стабильная 4K съёмка</div>
+    </div>
+</section>
+
+<section id="specs">
+    <h2 class="section-title">Характеристики</h2>
+    <div class="specs">
+        <div class="spec">Вес: < 250 г</div>
+        <div class="spec">Дальность: до 10 км</div>
+        <div class="spec">Камера: 4K</div>
+        <div class="spec">Автофункции: Follow, Return Home</div>
+    </div>
+</section>
+
+<section class="cta" id="buy">
+    <h2>Начни своё путешествие в небе уже сегодня</h2>
+    <a class="btn" href="https://www.amazon.com/dp/B0CGX8L5YH" target="_blank">
+        Перейти на Amazon
+    </a>
+</section>
+
+<script>
+/* scroll animation */
+const features = document.querySelectorAll('.feature');
+
+window.addEventListener('scroll', () => {
+    features.forEach(el => {
+        const top = el.getBoundingClientRect().top;
+        if(top < window.innerHeight - 50) {
+            el.classList.add('visible');
+        }
+    });
+});
+</script>
+
+</body>
+</html>
